@@ -1,6 +1,6 @@
 {
     "name": "stem6s2",
-    "version": "0.0.0",
+    "version": "0.0.1",
     "description": "stem6s2",
     "dependencies": {
         "core": "*",
@@ -8,14 +8,14 @@
     },
     "files": [
         "README.md",
-        "PID_v1.cpp",    
+        "PID_v1.cpp",
         "PID_v1.h",
         "PID_namespace.cpp",
-        "PID_namespace.ts", 
+        "PID_namespace.ts",
         "PS2_Driver.cpp",
-        "PS2_Driver.h",  
+        "PS2_Driver.h",
         "PS2X.cpp",
-        "PS2X.ts",             
+        "PS2X.ts",
         "shims.d.ts",
         "enums.d.ts"
     ],
