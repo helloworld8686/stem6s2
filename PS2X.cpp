@@ -10,30 +10,57 @@
 *
 ******************************************************************************/
 #include "pxt.h"
+#include "MicroBitPin.h"
 #include "PS2_Driver.h"
+#include "mbed.h"
+//PS2
+
+
 
 using namespace pxt;
 
 //% weight=20 color=#436EEE icon="\uf108"
 namespace PS2X_PAD {
-	PS2X *PS2;
-	
+	PS2X  PS2;
+#if 0
+    MicroBitPin P16(MICROBIT_ID_IO_P16, MICROBIT_PIN_P16, PIN_CAPABILITY_DIGITAL);
+    DigitalOut  P16_CS(MICROBIT_PIN_P16);
+#endif
     //%
     void PS2X_PAD_Init() {
-        PS2->PS2_Init();
+        PS2.PS2_Init();
     }
-	
     //%
     void PS2X_PAD_Scan() {
-        PS2->read_gamepad();    
-        
+        PS2.read_gamepad();    
+    }
+
+    #if 0
+    //%
+    void PS2X_PAD_Scan() {
+        wait_ms(10);
+        P16_CS = 0;
+        wait_ms(10);
+        P16_CS = 1;      
+    }
+    #endif
+	#if 0 
+    //%
+    void PS2X_PAD_Scan() {
+        wait_ms(10);
+        P16.setDigitalValue(0);
+        wait_ms(10);
+        P16.setDigitalValue(1);      
+    }
+    #endif
+     
+  
+
+    //%
+    int PS2X_ButtonPressed() 
+    {      
+        return PS2.ButtonPressed();
     }
     
-    //%
-    bool PS2X_Key(unsigned int button) {
-        if (PS2->read_gamepad() == false)
-            return false;
-        return PS2->ButtonPressed(button);
-    }
 }
 

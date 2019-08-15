@@ -22,6 +22,7 @@ private:
     unsigned char PS2data[21];
     void spi_init();
     void Scan(void); 
+    unsigned char PS2_SPI_Write_Byte (char byte);
     void sendCommandString(unsigned char *, int );
     bool en_Rumble;
     bool en_Pressures;
@@ -38,10 +39,10 @@ public:
     bool  read_gamepad(void);
     void enableRumble();
     bool enablePressures();
-    bool NewButtonState(unsigned int button); 
-    bool Button(unsigned int button);
-    bool ButtonPressed(unsigned int button) ;
-    bool ButtonReleased(unsigned int button); 
+    int NewButtonState(); 
+    int Button();
+    int ButtonPressed() ;
+    int ButtonReleased(); 
 };
 
 
