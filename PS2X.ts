@@ -58,7 +58,7 @@ namespace PS2X_PAD{
     //% shim=PS2X_PAD::PS2X_PAD_Init
     //% weight=200
     function PS2X_PAD_Init(): void {
-
+        return;
     }
 
     //% blockId=PS2X_PAD_Scan
@@ -67,7 +67,7 @@ namespace PS2X_PAD{
     //% shim=PS2X_PAD::PS2X_PAD_Scan
     //% weight=195
     function PS2X_PAD_Scan(): void {
-
+        return;
     }
 
 
@@ -107,7 +107,7 @@ namespace PS2X_PAD{
     }
 
 
-    //% blockId=makerbit_infrared_on_ir_button
+    //% blockId=onPS2Button
     //% block="当遥控器按键|%button|被|%action|时"
     //% button.fieldEditor="gridpicker"
     //% button.fieldOptions.columns=3
