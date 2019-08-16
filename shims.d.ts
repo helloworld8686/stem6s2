@@ -12,8 +12,7 @@
      * | Info        :   Basic version
      *
      ******************************************************************************/
-    //% weight=20 color=#436EEE icon="\uf108"
-    //% category="思特牛S2"
+
 declare namespace STEM6S2 {
 }
 
