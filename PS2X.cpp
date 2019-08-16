@@ -20,6 +20,7 @@
 using namespace pxt;
 
 //% weight=20 color=#436EEE icon="\uf108"
+//% category="思特牛S2"
 namespace STEM6S2 {
 	PS2X  PS2;
 #if 0
