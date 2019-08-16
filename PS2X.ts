@@ -101,7 +101,7 @@ const enum PS2XButton {
     Unused_24 = -24
 }
 
-//% weight=20 color=#436EEE icon="\uf108"
+//% weight=20 color=#436EEE icon="\uf108" block="思特牛S2"
 //% category="思特牛S2"
 namespace STEM6S2{
     const MICROBIT_PS2X_BUTTON_PRESSED_ID = 791;
