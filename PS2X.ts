@@ -165,7 +165,7 @@ namespace PS2X_PAD{
     //% blockId=onPS2Button
     //% block="当PS2遥控器按键|%button|被|%action|时"
     //% button.fieldEditor="gridpicker"
-    //% button.fieldOptions.columns=3
+    //% button.fieldOptions.columns=8
     //% button.fieldOptions.tooltips="false"
     //% weight=69
     export function onPS2Button(
