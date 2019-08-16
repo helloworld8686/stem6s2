@@ -48,21 +48,21 @@ const enum PS2XButton {
 
 
 
-    //% block=" "
+    //% block="  "
     Unused_13 = -13,       
     //% block="↑"
     PSB_PAD_UP     = 0x0010,
-    //% block=" " 
+    //% block="  " 
     Unused_14 = -14,
-    //% block=" "
+    //% block="  "
     Unused_15 = -15,     
-    //% block=" "
+    //% block="  "
     Unused_16 = -16,
-    //% block=" "
+    //% block="  "
     Unused_17 = -17,   
     //% block="△"
     PSB_TRIANGLE   = 0x1000,
-    //% block=" " 
+    //% block="  " 
     Unused_18 = -18,
 
 
