@@ -105,14 +105,14 @@ const enum PS2XButton {
 
 //% weight=20 color=#436EEE icon="\uf108"
 //% category="思特牛S2"
-namespace PS2X_PAD{
+namespace STEM6S2{
     const MICROBIT_PS2X_BUTTON_PRESSED_ID = 791;
     const MICROBIT_PS2X_BUTTON_RELEASED_ID = 792;
     
     //% blockId=PS2X_PAD_Init
     //% blockGap=8
     //% block="PS2X_PAD_Init"
-    //% shim=PS2X_PAD::PS2X_PAD_Init
+    //% shim=STEM6S2::PS2X_PAD_Init
     //% weight=200
     function PS2X_PAD_Init(): void {
         return;
@@ -121,7 +121,7 @@ namespace PS2X_PAD{
     //% blockId=PS2X_PAD_Scan
     //% blockGap=8
     //% block="PS2X_PAD_Scan"
-    //% shim=PS2X_PAD::PS2X_PAD_Scan
+    //% shim=STEM6S2::PS2X_PAD_Scan
     //% weight=195
     function PS2X_PAD_Scan(): void {
         return;
@@ -131,7 +131,7 @@ namespace PS2X_PAD{
     //% blockId=PS2X_ButtonPressed
     //% blockGap=8
     //% block="PS2X_ButtonPressed"
-    //% shim=PS2X_PAD::PS2X_ButtonPressed
+    //% shim=STEM6S2::PS2X_ButtonPressed
     //% weight=195
     function PS2X_ButtonPressed(): number {
         return 0;

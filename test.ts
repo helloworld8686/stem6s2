@@ -1,6 +1,6 @@
-PS2X_PAD.PS2X_INIT()
+STEM6S2.PS2X_INIT()
 
-PS2X_PAD.onPS2Button(PS2XButton.PSB_SELECT, PS2XButtonAction.Pressed,function () {
+STEM6S2.onPS2Button(PS2XButton.PSB_SELECT, PS2XButtonAction.Pressed,function () {
     basic.showLeds(`
     . # # # .
     . . # . .

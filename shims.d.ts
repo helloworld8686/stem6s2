@@ -13,7 +13,7 @@
      *
      ******************************************************************************/
     //% weight=20 color=#436EEE icon="\uf108"
-declare namespace PS2X_PAD {
+declare namespace STEM6S2 {
 }
 
 // Auto-generated. Do not edit. Really.

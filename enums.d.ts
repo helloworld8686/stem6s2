@@ -1,5 +1,5 @@
 // Auto-generated. Do not edit.
-declare namespace PS2X_PAD {
+declare namespace STEM6S2 {
 }
 
 // Auto-generated. Do not edit. Really.
