@@ -6,46 +6,101 @@ const enum PS2XButtonAction {
 }
 
 const enum PS2XButton {
+
+    //% block=" "
+    Unused_1 = -7,  
+    //% block="L2"
+    PSB_L2         = 0x0100, 
+    //% block=" "
+    Unused_2 = -8,
+    //% block=" "
+    Unused_3 = -9,   
+    //% block=" " 
+    Unused_4 = -10,
+    //% block=" "
+    Unused_5 = -11,  
+    //% block="R2"
+    PSB_R2         = 0x0200,   
+    //% block=" "
+    Unused_6 = -12,
+
+
+
+
+    //% block=" "
+    Unused_7 = -7,   
+    //% block="L1"
+    PSB_L1         = 0x0400,  
+    //% block=" "
+    Unused_8 = -8,
+    //% block=" "
+    Unused_9 = -9,   
+    //% block=" " 
+    Unused_10 = -10,
+    //% block=" "
+    Unused_11 = -11,  
+    //% block="R1"
+    PSB_R1         = 0x0800,   
+    //% block=" "
+    Unused_12 = -12,
+
+
+
+
+
+    //% block=" "
+    Unused_13 = -13,       
+    //% block="▲"
+    PSB_PAD_UP     = 0x0010,
+    //% block=" " 
+    Unused_14 = -14,
+    //% block=" "
+    Unused_15 = -15,     
+    //% block=" "
+    Unused_16 = -16,
+    //% block=" "
+    Unused_17 = -17,   
+    //% block="△"
+    PSB_TRIANGLE   = 0x1000,
+    //% block=" " 
+    Unused_18 = -18,
+
+
+    //% block="◀"
+    PSB_PAD_LEFT   = 0x0080,
+    //% block=" "
+    Unused_19 = -19,  
+    //% block="▶"
+    PSB_PAD_RIGHT  = 0x0020,
     //% block="SELECT"  
     PSB_SELECT     = 0x0001,
+    //% block="START"
+    PSB_START      = 0x0008,
+    //% block="□"
+    PSB_SQUARE     = 0x8000,
+    //% block=" "
+    Unused_20 = -20,
+    //% block="○"
+    PSB_CIRCLE     = 0x2000,
+
+
+
+    //% block=" "
+    Unused_21 = -21,    
+    //% block="▼"
+    PSB_PAD_DOWN   = 0x0040,
+    //% block=" " 
+    Unused_22 = -22,  
     //% block="L3" 
     PSB_L3         = 0x0002,
     //% block="R3"
-    PSB_R3         = 0x0004,
-    //% block="START"
-    PSB_START      = 0x0008,
-    //% block="▲"
-    PSB_PAD_UP     = 0x0010,
-    //% block="▶"
-    PSB_PAD_RIGHT  = 0x0020,
-    //% block="▼"
-    PSB_PAD_DOWN   = 0x0040,
-    //% block="◀"
-    PSB_PAD_LEFT   = 0x0080,
-    //% block="L2"
-    PSB_L2         = 0x0100,
-    //% block="R2"
-    PSB_R2         = 0x0200,
-    //% block="L1"
-    PSB_L1         = 0x0400,
-    //% block="R1"
-    PSB_R1         = 0x0800,
-    //% block="GREEN"
-    PSB_GREEN      = 0x1000,
-    //% block="RED"
-    PSB_RED        = 0x2000,
-    //% block="BLUE"
-    PSB_BLUE       = 0x4000,
-    //% block="PINK"
-    PSB_PINK       = 0x8000,
-    //% block="△"
-    PSB_TRIANGLE   = 0x1000,
-    //% block="○"
-    PSB_CIRCLE     = 0x2000,a
+    PSB_R3         = 0x0004,  
+    //% block=" "
+    Unused_23 = -26, 
     //% block="×"
-    PSB_CROSS      = 0x4000,
-    //% block="□"
-    PSB_SQUARE     = 0x8000
+    PSB_CROSS      = 0x4000,    
+    //% block=" "
+    Unused_24 = -24
 }
 
 //% weight=20 color=#436EEE icon="\uf108"
@@ -108,7 +163,7 @@ namespace PS2X_PAD{
 
 
     //% blockId=onPS2Button
-    //% block="当遥控器按键|%button|被|%action|时"
+    //% block="当PS2遥控器按键|%button|被|%action|时"
     //% button.fieldEditor="gridpicker"
     //% button.fieldOptions.columns=3
     //% button.fieldOptions.tooltips="false"
