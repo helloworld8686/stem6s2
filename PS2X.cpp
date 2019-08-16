@@ -20,7 +20,7 @@
 using namespace pxt;
 
 //% weight=20 color=#436EEE icon="\uf108"
-namespace PS2X_PAD {
+namespace STEM6S2 {
 	PS2X  PS2;
 #if 0
     MicroBitPin P16(MICROBIT_ID_IO_P16, MICROBIT_PIN_P16, PIN_CAPABILITY_DIGITAL);

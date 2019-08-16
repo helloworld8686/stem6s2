@@ -104,9 +104,11 @@ const enum PS2XButton {
 }
 
 //% weight=20 color=#436EEE icon="\uf108"
+//% category="思特牛S2"
 namespace PS2X_PAD{
     const MICROBIT_PS2X_BUTTON_PRESSED_ID = 791;
     const MICROBIT_PS2X_BUTTON_RELEASED_ID = 792;
+    
     //% blockId=PS2X_PAD_Init
     //% blockGap=8
     //% block="PS2X_PAD_Init"
@@ -136,10 +138,10 @@ namespace PS2X_PAD{
     }
 
 
-
+    //% subcategory="PS2遥控器"
     //% blockId=PS2X_INIT
     //% blockGap=8
-    //% block="PS2X_INIT"
+    //% block="PS2遥控器初始化"
     //% weight=195
     export function PS2X_INIT(): void{
         let temp = 0;
@@ -161,7 +163,7 @@ namespace PS2X_PAD{
         })
     }
 
-
+    //% subcategory="PS2遥控器"
     //% blockId=onPS2Button
     //% block="当PS2遥控器按键|%button|被|%action|时"
     //% button.fieldEditor="gridpicker"
