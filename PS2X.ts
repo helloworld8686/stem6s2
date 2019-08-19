@@ -106,7 +106,7 @@ const enum PS2XButton {
 namespace STEM6S2{
     const MICROBIT_PS2X_BUTTON_PRESSED_ID = 791;
     const MICROBIT_PS2X_BUTTON_RELEASED_ID = 792;
-    
+    //% subcategory="PS2遥控器前景模式"
     //% blockId=PS2X_PAD_Init
     //% blockGap=8
     //% block="PS2X_PAD_Init"
@@ -116,9 +116,10 @@ namespace STEM6S2{
         return;
     }
 
+    //% subcategory="PS2遥控器前景模式"
     //% blockId=PS2X_PAD_Scan
     //% blockGap=8
-    //% block="PS2X_PAD_Scan"
+    //% block="PS2遥控器前景扫描"
     //% shim=STEM6S2::PS2X_PAD_Scan
     //% weight=195
     export function PS2X_PAD_Scan(): void {
@@ -144,22 +145,31 @@ namespace STEM6S2{
         return 0;
     }
 
-    //% subcategory="PS2遥控器状态"
-    //% blockId=PS2X_INIT
+    //% subcategory="PS2遥控器前景模式"
+    //% blockId=PS2X_Button
     //% blockGap=8
     //% block="PS2遥控器按键|%button|被|%action|"
-    //% weight=195
-    export function PS2X_Button( button: PS2XButton, action: PS2XButtonAction): number {
+    //% button.fieldEditor="gridpicker"
+    //% button.fieldOptions.columns=8
+    //% button.fieldOptions.tooltips="false"
+    //% weight=69
+    export function PS2X_Button( button: PS2XButton, action: PS2XButtonAction): Boolean {
         if (action == PS2XButtonAction.Pressed)
         {
-            return (PS2X_ButtonPressed()&button)           
+            if (PS2X_ButtonPressed()&button)
+                return true
+            else
+                return false            
         }
         else
         {
-            return (PS2X_ButtonReleased()&button)          
+            if (PS2X_ButtonReleased()&button)    
+                return true
+            else
+                return false       
         }
     }
-    //% subcategory="PS2遥控器"
+    //% subcategory="PS2遥控器背景模式"
     //% blockId=PS2X_INIT
     //% blockGap=8
     //% block="PS2遥控器初始化"
@@ -201,7 +211,7 @@ namespace STEM6S2{
         })
     }
 
-    //% subcategory="PS2遥控器"
+    //% subcategory="PS2遥控器背景模式"
     //% blockId=onPS2Button
     //% block="当PS2遥控器按键|%button|被|%action|时"
     //% button.fieldEditor="gridpicker"
