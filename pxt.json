@@ -1,6 +1,6 @@
 {
     "name": "stem6s2",
-    "version": "0.0.19",
+    "version": "0.0.20",
     "description": "stem6s2",
     "dependencies": {
         "core": "*",
