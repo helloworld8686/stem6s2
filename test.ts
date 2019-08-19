@@ -1,4 +1,47 @@
+STEM6S2.PS2X_PAD_Init()
+serial.redirect(
+SerialPin.P8,
+SerialPin.P0,
+BaudRate.BaudRate115200
+)
 
+serial.writeLine("start")
+basic.forever(function () {
+    STEM6S2.PS2X_PAD_Scan()
+    if (STEM6S2.PS2X_Button(PS2XButton.PSB_PAD_UP, PS2XButtonAction.Pressed)) {
+        serial.writeLine("up1")
+    }
+    if (STEM6S2.PS2X_Button(PS2XButton.PSB_PAD_UP, PS2XButtonAction.Pressed)) {
+        serial.writeLine("up0")
+    }
+    if (STEM6S2.PS2X_Button(PS2XButton.PSB_PAD_DOWN, PS2XButtonAction.Pressed)) {
+        serial.writeLine("down1")
+    }
+    if (STEM6S2.PS2X_Button(PS2XButton.PSB_PAD_DOWN, PS2XButtonAction.Released)) {
+        serial.writeLine("down0")
+    }
+    if (STEM6S2.PS2X_Button(PS2XButton.PSB_PAD_RIGHT, PS2XButtonAction.Pressed)) {
+        serial.writeLine("right1")
+    }
+    if (STEM6S2.PS2X_Button(PS2XButton.PSB_PAD_RIGHT, PS2XButtonAction.Released)) {
+        serial.writeLine("right0")
+    }
+    if (STEM6S2.PS2X_Button(PS2XButton.PSB_PAD_LEFT, PS2XButtonAction.Pressed)) {
+        serial.writeLine("left1")
+    }
+    if (STEM6S2.PS2X_Button(PS2XButton.PSB_PAD_LEFT, PS2XButtonAction.Released)) {
+        serial.writeLine("left0")
+    }
+})
+
+
+
+
+
+
+
+
+/*
 STEM6S2.PS2X_PAD_Init()
 serial.redirect(
     SerialPin.P8,
@@ -28,8 +71,10 @@ basic.forever(function () {
     	serial.writeLine("6")
     }
 })
-
+*/
 /*
+
+
 STEM6S2.onPS2Button(PS2XButton.PSB_PAD_UP, PS2XButtonAction.Pressed, function () {
     serial.writeLine("2")
 })

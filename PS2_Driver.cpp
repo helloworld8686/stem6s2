@@ -126,6 +126,8 @@ void PS2X::PS2_Init(void)
 {
     spi_init();
     config_gamepad();
+    read_gamepad();
+    read_gamepad();
 }
 
 void PS2X::config_gamepad(){
