@@ -109,7 +109,7 @@ namespace STEM6S2{
     //% subcategory="PS2遥控器前景模式"
     //% blockId=PS2X_PAD_Init
     //% blockGap=8
-    //% block="PS2X_PAD_Init"
+    //% block="PS2X遥控器前景初始化"
     //% shim=STEM6S2::PS2X_PAD_Init
     //% weight=200
     export function PS2X_PAD_Init(): void {
@@ -122,7 +122,7 @@ namespace STEM6S2{
     //% block="PS2遥控器前景扫描"
     //% shim=STEM6S2::PS2X_PAD_Scan
     //% weight=195
-    export function PS2X_PAD_Scan(): void {
+    function PS2X_PAD_Scan(): void {
         return;
     }
 
@@ -153,7 +153,8 @@ namespace STEM6S2{
     //% button.fieldOptions.columns=8
     //% button.fieldOptions.tooltips="false"
     //% weight=69
-    export function PS2X_Button( button: PS2XButton, action: PS2XButtonAction): Boolean {
+    export function PS2X_Button( button: PS2XButton, action: PS2XButtonAction): boolean {
+        
         if (action == PS2XButtonAction.Pressed)
         {
             if (PS2X_ButtonPressed()&button)

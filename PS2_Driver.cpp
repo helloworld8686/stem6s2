@@ -182,10 +182,10 @@ bool PS2X::read_gamepad(void) {
     double temp = us_ticker_read()/1000 - last_read;
     if (temp > 1500) //waited to long
         config_gamepad();
-    #if 0
+
     if(temp < read_delay)  //waited too short
         Driver_Delay_ms(read_delay - temp);
-    #endif 
+    
     
     for (int RetryCnt = 0; RetryCnt < 5; RetryCnt++)
     {
