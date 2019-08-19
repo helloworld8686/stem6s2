@@ -41,8 +41,9 @@ DigitalOut PS2_MOSI(MICROBIT_PIN_P15);
 
 //delay
 #define Driver_Delay_ms(xms) wait_ms(xms)
-#define Driver_Delay_us(xus) wait_us(xus)
-#define D_SPI_Delay     5
+//#define Driver_Delay_us(xus) wait_us(xus)
+//#define Driver_Delay_us(xus) for(int m = 0; m < 100; m++)
+#define D_SPI_Delay     1
 #define D_Send_Delay    10  
 
 static unsigned char enter_config[]={0x01,0x43,0x00,0x01,0x00};
@@ -58,6 +59,18 @@ static unsigned char scan[9] = {0x01,0x42,0x00,0x00,0x00,0x00,0x00,0x00,0x00};
 #define CLR(x,y) (x&=(~(1<<y)))
 #define CHK(x,y) (x & (1<<y))
 #define TOG(x,y) (x^=(1<<y))
+
+void PS2X::Driver_Delay_us(int xus)
+{
+ //   wait_us(xus)
+    for(int m = 0; m < xus; m++) 
+    { 
+        for(int k = 0; k < 50; k++)
+        {
+            us_cnt = us_cnt + 1;
+        }    
+    }
+}
 
 void PS2X::spi_init(void)
 {
@@ -83,11 +96,15 @@ unsigned char PS2X::PS2_SPI_Write_Byte (char byte) {
         Driver_Delay_us(D_SPI_Delay);
         PS2_CLK = 0;
         Driver_Delay_us(D_SPI_Delay);
+        Driver_Delay_us(D_SPI_Delay);    
         if(PS2_MISO == 1) 
             bitSet(tmp,i);
-        Driver_Delay_us(D_SPI_Delay);    
     }
     PS2_CLK = 1; 
+    Driver_Delay_us(D_SPI_Delay);
+    Driver_Delay_us(D_SPI_Delay);
+    Driver_Delay_us(D_SPI_Delay);
+    Driver_Delay_us(D_SPI_Delay);
     return tmp;
 }
 
@@ -165,10 +182,11 @@ bool PS2X::read_gamepad(void) {
     double temp = us_ticker_read()/1000 - last_read;
     if (temp > 1500) //waited to long
         config_gamepad();
-
+    #if 0
     if(temp < read_delay)  //waited too short
         Driver_Delay_ms(read_delay - temp);
-
+    #endif 
+    
     for (int RetryCnt = 0; RetryCnt < 5; RetryCnt++)
     {
         LCD_CS_0; // low enable joystick
@@ -190,7 +208,7 @@ bool PS2X::read_gamepad(void) {
     }
 
     if ((PS2data[1] & 0xf0) != 0x70) {
-        if (read_delay < 10)
+        if (read_delay < 5)
             read_delay++;   // see if this helps out...
     }
     else
@@ -225,7 +243,7 @@ int PS2X::ButtonPressed(void) {
 }
 
 int PS2X::ButtonReleased(void) {
-  return((NewButtonState()) & (((~last_buttons) & 0xFFFF) > 0));
+  return((NewButtonState()) & ((~last_buttons) & 0xFFFF));
 }
 
 

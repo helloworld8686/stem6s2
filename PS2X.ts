@@ -112,7 +112,7 @@ namespace STEM6S2{
     //% block="PS2X_PAD_Init"
     //% shim=STEM6S2::PS2X_PAD_Init
     //% weight=200
-    function PS2X_PAD_Init(): void {
+    export function PS2X_PAD_Init(): void {
         return;
     }
 
@@ -121,7 +121,7 @@ namespace STEM6S2{
     //% block="PS2X_PAD_Scan"
     //% shim=STEM6S2::PS2X_PAD_Scan
     //% weight=195
-    function PS2X_PAD_Scan(): void {
+    export function PS2X_PAD_Scan(): void {
         return;
     }
 
@@ -135,7 +135,30 @@ namespace STEM6S2{
         return 0;
     }
 
+    //% blockId=PS2X_ButtonReleased
+    //% blockGap=8
+    //% block="PS2X_ButtonReleased"
+    //% shim=STEM6S2::PS2X_ButtonReleased
+    //% weight=195
+    function PS2X_ButtonReleased(): number {
+        return 0;
+    }
 
+    //% subcategory="PS2遥控器状态"
+    //% blockId=PS2X_INIT
+    //% blockGap=8
+    //% block="PS2遥控器按键|%button|被|%action|"
+    //% weight=195
+    export function PS2X_Button( button: PS2XButton, action: PS2XButtonAction): number {
+        if (action == PS2XButtonAction.Pressed)
+        {
+            return (PS2X_ButtonPressed()&button)           
+        }
+        else
+        {
+            return (PS2X_ButtonReleased()&button)          
+        }
+    }
     //% subcategory="PS2遥控器"
     //% blockId=PS2X_INIT
     //% blockGap=8
@@ -147,15 +170,32 @@ namespace STEM6S2{
             PS2X_PAD_Init()
             while(true)
             {
-                basic.pause(10)
+                basic.pause(5)
                 PS2X_PAD_Scan()
                 temp = PS2X_ButtonPressed()
+                /*serial.writeLine("pressed:")
+                serial.writeNumber(temp)
+                serial.writeLine("end")*/
                 if (temp > 0)
                 {
+                        
                     control.raiseEvent(
                         MICROBIT_PS2X_BUTTON_PRESSED_ID,
                         temp
                         )
+                    basic.pause(1000)    
+                }
+                else
+                {
+                    temp = PS2X_ButtonReleased()
+                    if (temp > 0)
+                    {
+                        control.raiseEvent(
+                            MICROBIT_PS2X_BUTTON_RELEASED_ID,
+                            temp
+                            )
+                    } 
+                    
                 }   
             }
         })

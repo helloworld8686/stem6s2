@@ -21,6 +21,7 @@ class PS2X{
 private:
     unsigned char PS2data[21];
     void spi_init();
+    void Driver_Delay_us(int xus);
     void Scan(void); 
     unsigned char PS2_SPI_Write_Byte (char byte);
     void sendCommandString(unsigned char *, int );
@@ -31,6 +32,8 @@ private:
 
     unsigned int last_buttons;
     unsigned int buttons;
+
+    unsigned int us_cnt;
 
 public:
     void config_gamepad();

@@ -61,6 +61,12 @@ namespace STEM6S2 {
     {      
         return PS2.ButtonPressed();
     }
-    
+
+    //%
+    int PS2X_ButtonReleased() 
+    {      
+        return PS2.ButtonReleased();
+    }
+
 }
 
