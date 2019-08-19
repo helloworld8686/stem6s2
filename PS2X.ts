@@ -122,7 +122,7 @@ namespace STEM6S2{
     //% block="PS2遥控器前景扫描"
     //% shim=STEM6S2::PS2X_PAD_Scan
     //% weight=195
-    function PS2X_PAD_Scan(): void {
+    export function PS2X_PAD_Scan(): void {
         return;
     }
 
@@ -157,8 +157,11 @@ namespace STEM6S2{
         
         if (action == PS2XButtonAction.Pressed)
         {
+            
             if (PS2X_ButtonPressed()&button)
+            { 
                 return true
+            }
             else
                 return false            
         }
