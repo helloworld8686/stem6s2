@@ -146,11 +146,12 @@ namespace STEM6S2 {
     /**
    * Returns the code of the IR button that is currently pressed and 0 if no button is pressed.
    */
-  //% subcategory="超声波"
-  //% blockId=UltrasonicDutyRead
-  //% block="超声波测量值%compare|%value厘米"
+  //% subcategory="超声波测距"
+  //% blockId=UltrasonicDutyCompare
+  //% block="当超声波测量值%compare|%value厘米时"
   //% weight=57
-  export function UltrasonicDutyRead(value:number,compare:Ultrasoniccompare): boolean {
+  //% value.min=2 value.max=400 value.defl=2
+  export function UltrasonicDutyCompare(compare:Ultrasoniccompare, value:number): boolean {
     if (Ultrasonicinitialized == false)
       connectUltrasonic()
     if (UltrasonicDuty == 0)
@@ -175,4 +176,14 @@ namespace STEM6S2 {
         return false
     }
   }
+    //% subcategory="超声波测距"
+  //% blockId=UltrasonicDutyRead
+  //% block="超声波测量值 (厘米)"
+  //% weight=57
+  export function UltrasonicDutyRead(): number {
+    if (Ultrasonicinitialized == false)
+      connectUltrasonic()
+    return  UltrasonicDuty*34/2000 
+  }
+
 }

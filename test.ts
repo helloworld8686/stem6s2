@@ -43,15 +43,24 @@ STEM6S2.ServoMotor(pwmServo.Clav, ServoValue_Clav)
 
 //serial.writeLine("start")
 basic.forever(function () {
-
-    if (STEM6S2.UltrasonicDutyRead(20,Ultrasoniccompare.big))
+    
+    if (STEM6S2.UltrasonicDutyRead() > 20)
     {
         STEM6S2.SetMecanum(MOTOR_Dir.Forward, 19999) 
     }
-    else if (STEM6S2.UltrasonicDutyRead(20,Ultrasoniccompare.small))
+    else if (STEM6S2.UltrasonicDutyRead()< 20)
     {
         STEM6S2.SetMecanum(MOTOR_Dir.Stop, 0)   
     }
+/*
+    if (STEM6S2.UltrasonicDutyCompare(Ultrasoniccompare.big,20))
+    {
+        STEM6S2.SetMecanum(MOTOR_Dir.Forward, 19999) 
+    }
+    else if (STEM6S2.UltrasonicDutyCompare(Ultrasoniccompare.small,20))
+    {
+        STEM6S2.SetMecanum(MOTOR_Dir.Stop, 0)   
+    }*/
 
     STEM6S2.PS2X_PAD_Scan()
     if(STEM6S2.PS2X_GetButton(PS2XButton.PSB_PAD_UP))
