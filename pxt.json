@@ -12,6 +12,8 @@
         "PS2_Driver.h",
         "PS2X.cpp",
         "PS2X.ts",
+        "pwm.ts",
+        "Ultrasonic.ts",
         "shims.d.ts",
         "enums.d.ts"
     ],

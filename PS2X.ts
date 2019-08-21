@@ -101,6 +101,18 @@ const enum PS2XButton {
     Unused_24 = -24
 }
 
+const enum PS2XButtonADC {
+    //% block="右边遥感水平方向模拟值"
+    PSS_RX = 5,
+    //% block="右边遥感竖直方向模拟值"
+    PSS_RY = 6,
+    //% block="左边边遥感水平方向模拟值"
+    PSS_LX = 7,
+    //% block="左边遥感竖直方向模拟值"
+    PSS_LY = 8  
+}
+
+
 //% weight=20 color=#436EEE icon="\uf108" block="思特牛S2"
 //% category="思特牛S2"
 namespace STEM6S2{
@@ -116,6 +128,15 @@ namespace STEM6S2{
         return;
     }
 
+    //% blockId=PS2X_Analog
+    //% blockGap=8
+    //% block="PS2遥控器按键|%button |的模拟值"
+    //% shim=STEM6S2::PS2X_Analog
+    //% weight=195
+    export function PS2X_Analog(button:PS2XButtonADC): number {
+        return 0;
+    }
+
     //% subcategory="PS2遥控器前景模式"
     //% blockId=PS2X_PAD_Scan
     //% blockGap=8
@@ -126,6 +147,14 @@ namespace STEM6S2{
         return;
     }
 
+    //% blockId=PS2X_Button
+    //% blockGap=8
+    //% block="PS2X_Button"
+    //% shim=STEM6S2::PS2X_Button
+    //% weight=195
+    function PS2X_Button(): number {
+        return 0;
+    }
 
     //% blockId=PS2X_ButtonPressed
     //% blockGap=8
@@ -146,14 +175,14 @@ namespace STEM6S2{
     }
 
     //% subcategory="PS2遥控器前景模式"
-    //% blockId=PS2X_Button
+    //% blockId=PS2X_OneButton
     //% blockGap=8
-    //% block="PS2遥控器按键|%button|被|%action|"
+    //% block="PS2遥控器按键|%button|被|%action|时"
     //% button.fieldEditor="gridpicker"
     //% button.fieldOptions.columns=8
     //% button.fieldOptions.tooltips="false"
     //% weight=69
-    export function PS2X_Button( button: PS2XButton, action: PS2XButtonAction): boolean {
+    export function PS2X_OneButton( button: PS2XButton, action: PS2XButtonAction): boolean {
         
         if (action == PS2XButtonAction.Pressed)
         {
@@ -173,6 +202,26 @@ namespace STEM6S2{
                 return false       
         }
     }
+
+    //% subcategory="PS2遥控器前景模式"
+    //% blockId=PS2X_GetButton
+    //% blockGap=8
+    //% block="PS2遥控器按键|%button|"
+    //% button1.fieldEditor="gridpicker"
+    //% button1.fieldOptions.columns=8
+    //% button1.fieldOptions.tooltips="false"
+    //% button2.fieldEditor="gridpicker"
+    //% button2.fieldOptions.columns=8
+    //% button2.fieldOptions.tooltips="false"
+    //% weight=69
+    export function PS2X_GetButton(button: PS2XButton): boolean {
+            if (PS2X_Button()&button)            
+                return true          
+            else
+                return false            
+  
+    }
+
     //% subcategory="PS2遥控器背景模式"
     //% blockId=PS2X_INIT
     //% blockGap=8

@@ -53,8 +53,13 @@ namespace STEM6S2 {
         P16.setDigitalValue(1);      
     }
     #endif
-     
-  
+
+    //% 
+    int PS2X_Button(){
+        return PS2.Button();      
+    }
+
+
 
     //%
     int PS2X_ButtonPressed() 
@@ -67,6 +72,10 @@ namespace STEM6S2 {
     {      
         return PS2.ButtonReleased();
     }
-
+    //%
+    int PS2X_Analog(int button)
+    {
+        return PS2.Analog(button);
+    }
 }
 

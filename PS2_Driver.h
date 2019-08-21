@@ -46,6 +46,7 @@ public:
     int Button();
     int ButtonPressed() ;
     int ButtonReleased(); 
+    int Analog(int button); 
 };
 
 
