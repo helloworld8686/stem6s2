@@ -183,6 +183,7 @@ namespace STEM6S2{
     //% button.fieldEditor="gridpicker"
     //% button.fieldOptions.columns=8
     //% button.fieldOptions.tooltips="false"
+    //% button.defl=PS2XButton.PSB_START
     //% weight=69
     export function PS2X_OneButton( button: PS2XButton, action: PS2XButtonAction): boolean {
         if (PS2X_initialized == false)
@@ -215,12 +216,10 @@ namespace STEM6S2{
     //% blockId=PS2X_GetButton
     //% blockGap=8
     //% block="PS2遥控器按键|%button|"
-    //% button1.fieldEditor="gridpicker"
-    //% button1.fieldOptions.columns=8
-    //% button1.fieldOptions.tooltips="false"
-    //% button2.fieldEditor="gridpicker"
-    //% button2.fieldOptions.columns=8
-    //% button2.fieldOptions.tooltips="false"
+    //% button.fieldEditor="gridpicker"
+    //% button.fieldOptions.columns=8
+    //% button.fieldOptions.tooltips="false"
+    //% button.defl=PS2XButton.PSB_START
     //% weight=69
     export function PS2X_GetButton(button: PS2XButton): boolean {
         if (PS2X_initialized == false)
@@ -283,6 +282,7 @@ namespace STEM6S2{
     //% button.fieldEditor="gridpicker"
     //% button.fieldOptions.columns=8
     //% button.fieldOptions.tooltips="false"
+    //% button.defl=PS2XButton.PSB_START
     //% weight=69
     function onPS2Button(
     button: PS2XButton,
