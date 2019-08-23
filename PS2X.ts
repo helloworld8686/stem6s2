@@ -119,17 +119,17 @@ namespace STEM6S2{
     const MICROBIT_PS2X_BUTTON_PRESSED_ID = 791;
     const MICROBIT_PS2X_BUTTON_RELEASED_ID = 792;
     let PS2X_initialized = false
-    //% subcategory="PS2遥控器前景模式"
+    //% subcategory="PS2遥控器"
     //% blockId=PS2X_PAD_Init
     //% blockGap=8
-    //% block="PS2X遥控器前景初始化"
+    //% block="PS2X遥控器初始化"
     //% shim=STEM6S2::PS2X_PAD_Init
     //% weight=200
     export function PS2X_PAD_Init(): void {
         return;
     }
 
-    //% subcategory="PS2遥控器前景模式"
+    //% subcategory="PS2遥控器"
     //% blockId=PS2X_Analog
     //% blockGap=8
     //% block="PS2遥控器按键|%button |的模拟值"
@@ -139,10 +139,10 @@ namespace STEM6S2{
         return 0;
     }
 
-    //% subcategory="PS2遥控器前景模式"
+    //% subcategory="PS2遥控器"
     //% blockId=PS2X_PAD_Scan
     //% blockGap=8
-    //% block="PS2遥控器前景扫描"
+    //% block="PS2遥控器扫描"
     //% shim=STEM6S2::PS2X_PAD_Scan
     //% weight=195
     export function PS2X_PAD_Scan(): void {
@@ -176,7 +176,7 @@ namespace STEM6S2{
         return 0;
     }
 
-    //% subcategory="PS2遥控器前景模式"
+    //% subcategory="PS2遥控器"
     //% blockId=PS2X_OneButton
     //% blockGap=8
     //% block="PS2遥控器按键|%button|被|%action|时"
@@ -211,7 +211,7 @@ namespace STEM6S2{
         }
     }
 
-    //% subcategory="PS2遥控器前景模式"
+    //% subcategory="PS2遥控器"
     //% blockId=PS2X_GetButton
     //% blockGap=8
     //% block="PS2遥控器按键|%button|"
@@ -240,7 +240,7 @@ namespace STEM6S2{
     //% blockGap=8
     //% block="PS2遥控器初始化"
     //% weight=195
-    export function PS2X_INIT(): void{
+    function PS2X_INIT(): void{
         let temp = 0;
         control.inBackground(function () {
             PS2X_PAD_Init()
@@ -284,7 +284,7 @@ namespace STEM6S2{
     //% button.fieldOptions.columns=8
     //% button.fieldOptions.tooltips="false"
     //% weight=69
-    export function onPS2Button(
+    function onPS2Button(
     button: PS2XButton,
     action: PS2XButtonAction,
     handler: () => void
