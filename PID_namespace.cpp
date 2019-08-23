@@ -3,7 +3,7 @@
 
 using namespace pxt;
 
-namespace PID_Namespace {
+namespace STEM6S2 {
     double originalSetpoint = 0;
     double setpoint = originalSetpoint;
     double input, output;
@@ -15,10 +15,37 @@ namespace PID_Namespace {
     PID pid(&input, &output, &setpoint, Kp, Ki, Kd, DIRECT); 
 
     //%
+    void PID_Init(){
+        pid.SetSampleTime(10);
+        pid.SetOutputLimits(-255, 255);
+    }
+
+    //%
+    void SetMode(int mode){
+        pid.SetMode(mode);   
+    }
+    //%
+    int  GetMode(){
+        return pid.GetMode();
+    }
+    //%
     void Compute(){
         pid.Compute();  
     }
+    //%
+    int GetTestData(){
+        return pid.GetTestData();
+    }
 
+    //%
+    void SetInput(int t_input){
+        input = t_input;    
+    }
+
+    //%
+    int GetOutput(){
+        return output;   
+    }
 
 }   
 

@@ -352,4 +352,62 @@ namespace STEM6S2 {
             setPwm(pwmMecanum.RA_Back, 0, 4095);   
         }   
     }
+
+    	/**
+	 * Servo Execute
+	 * @param leftSpeed [-19999-19999] leftSpeed of servo; eg: 1500, 500, 2500
+	*/
+    //% subcategory="麦克纳姆轮小车"
+    //% blockId=SetMecanum_Move 
+    //% block="左边前进速度%leftSpeed | 右边前进速度%rightSpeed"
+    //% weight=85
+    //% leftSpeed.min=-4095 leftSpeed.max=4095 leftSpeed.defl=0
+    //% rightSpeed.min=-4095 rightSpeed.max=4095 rightSpeed.defl=0
+    export function SetMecanum_Move(leftSpeed:number,rightSpeed:number): void {
+		if (!initialized) {
+            initPCA9685();
+        }
+        let Temp_leftSpeed =  leftSpeed
+        let Temp_rightSpeed  = rightSpeed
+        if (Temp_leftSpeed < 0)
+            Temp_leftSpeed = 0 - Temp_leftSpeed
+        if (Temp_rightSpeed < 0)
+            Temp_rightSpeed = 0 - Temp_rightSpeed
+
+        setPwm(pwmout.ML_PWMA, 0, Temp_leftSpeed);
+        setPwm(pwmout.ML_PWMB, 0, Temp_leftSpeed);
+        setPwm(pwmout.MR_PWMA, 0, Temp_rightSpeed);
+        setPwm(pwmout.MR_PWMB, 0, Temp_rightSpeed);    
+
+        if (leftSpeed > 0)
+        {
+            setPwm(pwmMecanum.LA_Back, 0, 0);
+            setPwm(pwmMecanum.LB_Back, 0, 0);     
+            setPwm(pwmMecanum.LA_Forward, 0, 4095);
+            setPwm(pwmMecanum.LB_Forward, 0, 4095);
+
+        }
+        else
+        {
+            setPwm(pwmMecanum.LA_Forward, 0, 0);
+            setPwm(pwmMecanum.LB_Forward, 0, 0);  
+            setPwm(pwmMecanum.LA_Back, 0, 4095);
+            setPwm(pwmMecanum.LB_Back, 0, 4095); 
+        }
+
+        if (rightSpeed > 0)
+        {
+            setPwm(pwmMecanum.RA_Back, 0, 0);
+            setPwm(pwmMecanum.RB_Back, 0, 0);
+            setPwm(pwmMecanum.RA_Forward, 0, 4095);
+            setPwm(pwmMecanum.RB_Forward, 0, 4095); 
+        }
+        else
+        {
+            setPwm(pwmMecanum.RA_Forward, 0, 0);
+            setPwm(pwmMecanum.RB_Forward, 0, 0); 
+            setPwm(pwmMecanum.RA_Back, 0, 4095);
+            setPwm(pwmMecanum.RB_Back, 0, 4095);
+        }
+    }    
 }

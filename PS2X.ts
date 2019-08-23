@@ -118,6 +118,7 @@ const enum PS2XButtonADC {
 namespace STEM6S2{
     const MICROBIT_PS2X_BUTTON_PRESSED_ID = 791;
     const MICROBIT_PS2X_BUTTON_RELEASED_ID = 792;
+    let PS2X_initialized = false
     //% subcategory="PS2遥控器前景模式"
     //% blockId=PS2X_PAD_Init
     //% blockGap=8
@@ -183,7 +184,13 @@ namespace STEM6S2{
     //% button.fieldOptions.tooltips="false"
     //% weight=69
     export function PS2X_OneButton( button: PS2XButton, action: PS2XButtonAction): boolean {
-        
+        if (PS2X_initialized == false)
+        {
+            PS2X_PAD_Init()
+            PS2X_initialized = true
+        }
+            
+
         if (action == PS2XButtonAction.Pressed)
         {
             
@@ -215,10 +222,15 @@ namespace STEM6S2{
     //% button2.fieldOptions.tooltips="false"
     //% weight=69
     export function PS2X_GetButton(button: PS2XButton): boolean {
-            if (PS2X_Button()&button)            
-                return true          
-            else
-                return false            
+        if (PS2X_initialized == false)
+        {
+            PS2X_PAD_Init()
+            PS2X_initialized = true
+        }
+        if (PS2X_Button()&button)            
+            return true          
+        else
+            return false            
   
     }
 

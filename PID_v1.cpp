@@ -22,10 +22,9 @@ PID::PID(double* Input, double* Output, double* Setpoint,
     PID::SetControllerDirection(ControllerDirection);
     PID::SetTunings(Kp, Ki, Kd);
 
-    timer.stop();
-    timer.start();
+ 
 
-    lastTime = timer.read_ms() - SampleTime;				
+    lastTime = us_ticker_read()/1000 - SampleTime;				
     inAuto = false;
     myOutput = Output;
     myInput = Input;
@@ -42,7 +41,7 @@ PID::PID(double* Input, double* Output, double* Setpoint,
 void PID::Compute()
 {
    if(!inAuto) return;
-   unsigned long now = timer.read_ms();
+   unsigned long now = us_ticker_read()/1000;
    unsigned long timeChange = (now - lastTime);
    if(timeChange>=SampleTime)
    {
@@ -185,3 +184,8 @@ double PID::GetKi(){ return  dispKi;}
 double PID::GetKd(){ return  dispKd;}
 int PID::GetMode(){ return  inAuto ? AUTOMATIC : MANUAL;}
 int PID::GetDirection(){ return controllerDirection;}
+
+
+int PID::GetTestData(){
+   return lastTime;
+}
