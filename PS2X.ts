@@ -102,13 +102,13 @@ const enum PS2XButton {
 }
 
 const enum PS2XButtonADC {
-    //% block="右边遥感水平方向模拟值"
+    //% block="右边遥感水平方向"
     PSS_RX = 5,
-    //% block="右边遥感竖直方向模拟值"
+    //% block="右边遥感竖直方向"
     PSS_RY = 6,
-    //% block="左边边遥感水平方向模拟值"
+    //% block="左边遥感水平方向"
     PSS_LX = 7,
-    //% block="左边遥感竖直方向模拟值"
+    //% block="左边遥感竖直方向"
     PSS_LY = 8  
 }
 
@@ -128,7 +128,7 @@ namespace STEM6S2{
     export function PS2X_PAD_Init(): void {
         return;
     }
-    
+
     //% subcategory="PS2遥控器前景模式"
     //% blockId=PS2X_Analog
     //% blockGap=8
