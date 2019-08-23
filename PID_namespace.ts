@@ -102,7 +102,8 @@ namespace STEM6S2{
         return 0;
     }
 
-    //% blockId=GetMode
+    //% subcategory="自动巡线模式"
+    //% blockId=IsModeLineFollowing
     //% blockGap=8
     //% block="当自动巡线模式时"
     //% weight=200
