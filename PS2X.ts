@@ -128,7 +128,8 @@ namespace STEM6S2{
     export function PS2X_PAD_Init(): void {
         return;
     }
-
+    
+    //% subcategory="PS2遥控器前景模式"
     //% blockId=PS2X_Analog
     //% blockGap=8
     //% block="PS2遥控器按键|%button |的模拟值"
