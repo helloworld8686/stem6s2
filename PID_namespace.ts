@@ -127,96 +127,99 @@ namespace STEM6S2{
     //% subcategory="自动巡线模式"
     //% blockId=PS2X_INIT
     //% blockGap=8
-    //% block="自动选线模块"
+    //% block="自动选线模块初始化"
     //% weight=195
-    export function LineFollowing(): void{
+    export function LineFollowing_Init(): void{
         let pos
-        if (GetMode() != STEM6S2Mode.AUTOMATIC)
-        {
-            return
-        }
-        if (LineFollowingInit == false){
-            pins.setPull(DigitalPin.P4,PinPullMode.PullNone)
-            pins.setPull(DigitalPin.P5,PinPullMode.PullNone)
-            pins.setPull(DigitalPin.P6,PinPullMode.PullNone)
-            pins.setPull(DigitalPin.P7,PinPullMode.PullNone)
-            pins.setPull(DigitalPin.P1,PinPullMode.PullNone)
-            LineFollowingInit = true
-            outlineCnt = 0
-            input = 0
-            ouput = 0
-            PID_Init()
-        }
-        pos = echoTrace()
-        if (pos == 0x00 || pos == 0x1f)
-        {
-            outlineCnt++;
-        }
-        else if ((pos & 0x01) == 0x01)
-        {
-            outlineCnt = 0;
-            input = 4;
-        }
-        else if ((pos & 0x10) == 0x10)
-        {
-            outlineCnt = 0;
-            input = -4;
-        }
-        else if ((pos & 0x08) == 0x08)
-        {
-            outlineCnt = 0;
-            input = -2;
-        }
-        else if ((pos & 0x02) == 0x02)
-        {
-            outlineCnt = 0;
-            input = 2;
-        }
-        else
-        {
-            outlineCnt = 0;
-            input = 0;
-        }
-        if (outlineCnt > 100)
-        {
-            //   motorController.stopMoving();
-            LineFollowingInit = false;
-            SetModeLineFollowing(STEM6S2Mode.MANUAL)
-            STEM6S2.SetMecanum(MOTOR_Dir.Stop, 0)
-        }
-        else
-        {
+        basic.forever(function () {
+            basic.pause(10)
+            if (GetMode() != STEM6S2Mode.AUTOMATIC)
+            {
+                return
+            }
+            if (LineFollowingInit == false){
+                pins.setPull(DigitalPin.P4,PinPullMode.PullNone)
+                pins.setPull(DigitalPin.P5,PinPullMode.PullNone)
+                pins.setPull(DigitalPin.P6,PinPullMode.PullNone)
+                pins.setPull(DigitalPin.P7,PinPullMode.PullNone)
+                pins.setPull(DigitalPin.P1,PinPullMode.PullNone)
+                LineFollowingInit = true
+                outlineCnt = 0
+                input = 0
+                ouput = 0
+                PID_Init()
+            }
+            pos = echoTrace()
+            if (pos == 0x00 || pos == 0x1f)
+            {
+                outlineCnt++;
+            }
+            else if ((pos & 0x01) == 0x01)
+            {
+                outlineCnt = 0;
+                input = 4;
+            }
+            else if ((pos & 0x10) == 0x10)
+            {
+                outlineCnt = 0;
+                input = -4;
+            }
+            else if ((pos & 0x08) == 0x08)
+            {
+                outlineCnt = 0;
+                input = -2;
+            }
+            else if ((pos & 0x02) == 0x02)
+            {
+                outlineCnt = 0;
+                input = 2;
+            }
+            else
+            {
+                outlineCnt = 0;
+                input = 0;
+            }
+            if (outlineCnt > 100)
+            {
+                //   motorController.stopMoving();
+                LineFollowingInit = false;
+                SetModeLineFollowing(STEM6S2Mode.MANUAL)
+                STEM6S2.SetMecanum(MOTOR_Dir.Stop, 0)
+            }
+            else
+            {
 
-            SetInput(input)
-            Compute()
-            ouput = GetOutput()
-/*
-            serial.writeString("[")
-            serial.writeNumber(GetTestData())
-            serial.writeString("]")
-            serial.writeString("input:")
-            serial.writeNumber(input)
-            serial.writeString("      ouput:")
-            serial.writeNumber(ouput)
-            serial.writeString("\n")*/
+                SetInput(input)
+                Compute()
+                ouput = GetOutput()
+    /*
+                serial.writeString("[")
+                serial.writeNumber(GetTestData())
+                serial.writeString("]")
+                serial.writeString("input:")
+                serial.writeNumber(input)
+                serial.writeString("      ouput:")
+                serial.writeNumber(ouput)
+                serial.writeString("\n")*/
 
-            let left_motor_speed = initial_motor_speed + ouput
-            let right_motor_speed = initial_motor_speed - ouput
-            if (left_motor_speed > 255)
-                left_motor_speed = 255
-            if (left_motor_speed < -255)    
-                left_motor_speed = -255
+                let left_motor_speed = initial_motor_speed + ouput
+                let right_motor_speed = initial_motor_speed - ouput
+                if (left_motor_speed > 255)
+                    left_motor_speed = 255
+                if (left_motor_speed < -255)    
+                    left_motor_speed = -255
 
-            if (right_motor_speed > 255)
-                right_motor_speed = 255
-            if (right_motor_speed < -255)    
-                right_motor_speed = -255
+                if (right_motor_speed > 255)
+                    right_motor_speed = 255
+                if (right_motor_speed < -255)    
+                    right_motor_speed = -255
 
-            left_motor_speed *=16    
+                left_motor_speed *=16    
 
-            right_motor_speed *=16
-  
-            STEM6S2.SetMecanum_Move(left_motor_speed,right_motor_speed)
-        }        
+                right_motor_speed *=16
+    
+                STEM6S2.SetMecanum_Move(left_motor_speed,right_motor_speed)
+            }
+        })        
     }
 }    

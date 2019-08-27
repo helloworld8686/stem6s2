@@ -5,11 +5,9 @@ serial.redirect(
     BaudRate.BaudRate115200
 )*/
 //STEM6S2.SetModeLineFollowing(STEM6S2Mode.AUTOMATIC)
-basic.forever(function () {
-    basic.pause(10)
-    STEM6S2.LineFollowing()  
-})    
 
+
+  
 let ServoValue_Base = 90
 let ServoValue_L = 90
 let ServoValue_R = 90
@@ -32,6 +30,7 @@ STEM6S2.ServoMotor(pwmServo.Base, ServoValue_Base)
 STEM6S2.ServoMotor(pwmServo.L, ServoValue_L)
 STEM6S2.ServoMotor(pwmServo.R, ServoValue_R)
 STEM6S2.ServoMotor(pwmServo.Clav, ServoValue_Clav)
+STEM6S2.LineFollowing_Init()
 // serial.writeLine("start")
 basic.forever(function () {
     STEM6S2.PS2X_PAD_Scan()
