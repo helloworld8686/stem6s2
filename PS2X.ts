@@ -183,7 +183,6 @@ namespace STEM6S2{
     //% button.fieldEditor="gridpicker"
     //% button.fieldOptions.columns=8
     //% button.fieldOptions.tooltips="false"
-    //% button.defl=PS2XButton.PSB_START
     //% weight=69
     export function PS2X_OneButton( button: PS2XButton, action: PS2XButtonAction): boolean {
         if (PS2X_initialized == false)
