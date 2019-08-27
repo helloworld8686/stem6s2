@@ -20,7 +20,9 @@ STEM6S2.ServoMotor(pwmServo.Base, ServoValue_Base)
 STEM6S2.ServoMotor(pwmServo.L, ServoValue_L)
 STEM6S2.ServoMotor(pwmServo.R, ServoValue_R)
 STEM6S2.ServoMotor(pwmServo.Clav, ServoValue_Clav)
+
 STEM6S2.LineFollowing_Init()
+
 
 basic.forever(function () {
     STEM6S2.PS2X_PAD_Scan()
